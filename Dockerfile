@@ -42,9 +42,9 @@ RUN wget --no-check-certificate https://download.libsodium.org/libsodium/release
 
 # cares
 RUN wget --no-check-certificate https://github.com/c-ares/c-ares/archive/cares-1_13_0.tar.gz && \
-    tar xzf cares-1_13_0.tar.gz && cd c-ares-cares-1_13_0 && ./buildconf && && \
+    tar xzf cares-1_13_0.tar.gz && cd c-ares-cares-1_13_0 && ./buildconf && \
     ./configure --host=mipsel-linux-gnu LDFLAGS=-static --prefix=/opt/c-ares && \
-    make && make install
+    make && make install && \
     cd /tmp/ && \
 
 # shadowsocks
