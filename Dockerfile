@@ -8,7 +8,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     g++-mipsel-linux-gnu gcc-mipsel-linux-gnu \
     gettext build-essential autoconf libtool libpcre3-dev asciidoc xmlto \
     libev-dev libc-ares-dev automake libmbedtls-dev libsodium-dev \
-    wget git ca-certificates openssl
+    wget git ca-certificates openssl && \
+    apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ## libsodium
 RUN wget --no-check-certificate https://download.libsodium.org/libsodium/releases/libsodium-1.0.15.tar.gz && \
