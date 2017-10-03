@@ -24,27 +24,25 @@ RUN wget --no-check-certificate https://download.libsodium.org/libsodium/release
     make && make install && \
     cd /tmp/ && \
 
-# mbedtls
-    wget --no-check-certificate https://tls.mbed.org/download/mbedtls-2.6.0-gpl.tgz && \
-    tar zxf mbedtls-2.6.0-gpl.tgz && \
-    cd mbedtls-2.6.0 && \
-    sed -i "s/DESTDIR=\/usr\/local/DESTDIR=\/opt\/mbedtls/g" Makefile && \
-    CC=mipsel-linux-gnu-gcc AR=mipsel-linux-gnu-ar LD=mipsel-linux-gnu-ld LDFLAGS=-static make install && \
-    cd /tmp/ && \
-
 # libev
     wget http://dist.schmorp.de/libev/libev-4.24.tar.gz && \
-    tar zxf libev-4.24.tar.gz && \
-    cd libev-4.24 && \
+    tar zxf libev-4.24.tar.gz && cd libev-4.24 && \
     ./configure --host=mipsel-linux-gnu --prefix=/opt/libev --disable-shared && \
     make && make install && \
     cd /tmp/ && \
 
 # cares
-RUN wget --no-check-certificate https://github.com/c-ares/c-ares/archive/cares-1_13_0.tar.gz && \
+    wget --no-check-certificate https://github.com/c-ares/c-ares/archive/cares-1_13_0.tar.gz && \
     tar xzf cares-1_13_0.tar.gz && cd c-ares-cares-1_13_0 && ./buildconf && \
     ./configure --host=mipsel-linux-gnu LDFLAGS=-static --prefix=/opt/c-ares && \
     make && make install && \
+    cd /tmp/ && \
+
+# mbedtls
+    wget --no-check-certificate https://tls.mbed.org/download/mbedtls-2.6.0-gpl.tgz && \
+    tar zxf mbedtls-2.6.0-gpl.tgz && cd mbedtls-2.6.0 && \
+    sed -i "s/DESTDIR=\/usr\/local/DESTDIR=\/opt\/mbedtls/g" Makefile && \
+    CC=mipsel-linux-gnu-gcc AR=mipsel-linux-gnu-ar LD=mipsel-linux-gnu-ld LDFLAGS=-static make install && \
     cd /tmp/ && \
 
 # shadowsocks
