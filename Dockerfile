@@ -25,7 +25,7 @@ RUN wget --no-check-certificate https://download.libsodium.org/libsodium/release
     cd /tmp/ && \
 
 # libev
-    wget http://xcr.oss-cn-hangzhou.aliyuncs.com/libev/libev-4.24.tar.gz && \
+    wget http://dist.schmorp.de/libev/libev-4.24.tar.gz && \
     tar zxf libev-4.24.tar.gz && cd libev-4.24 && \
     ./configure --host=mipsel-linux-gnu --prefix=/opt/libev --disable-shared && \
     make && make install && \
